@@ -11,7 +11,7 @@ class ChatApp extends StatelessWidget {
       title: "Chat Application",
       theme: ThemeData(
         primaryColor: Colors.red,
-        accentColor: Colors.pink[50],
+        accentColor: Colors.yellow[100],
       ),
       home: HomePage(),
     );
