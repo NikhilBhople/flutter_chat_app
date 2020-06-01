@@ -1,29 +1,13 @@
 import 'package:chatapp/model/message_model.dart';
 import 'package:chatapp/pages/detail/detail_chat_page.dart';
-import 'package:chatapp/pages/detail/list_view_animation.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class Chats extends StatelessWidget {
+class ChatItem extends StatelessWidget {
+  final int position;
+
+  const ChatItem({Key key, this.position}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(30), topRight: Radius.circular(30)),
-            color: Colors.white),
-        child: ListView.builder(
-            padding: EdgeInsets.only(right: 16, top: 30, bottom: 10),
-            itemCount: chats.length,
-            itemBuilder: (BuildContext context, int position) {
-              return WidgetANimator(buildChatItem(context, position));
-            }),
-      ),
-    );
-  }
-
-  GestureDetector buildChatItem(BuildContext context, int position) {
     return GestureDetector(
       onTap: () => Navigator.push(
           context,

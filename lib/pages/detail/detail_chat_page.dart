@@ -1,7 +1,11 @@
 import 'package:chatapp/model/message_model.dart';
 import 'package:chatapp/model/user_model.dart';
-import 'package:chatapp/pages/detail/list_view_animation.dart';
+import 'package:chatapp/pages/detail/utils/list_view_animation.dart';
+import 'package:chatapp/pages/detail/widgets/bottom_user_input_container.dart';
+import 'package:chatapp/pages/detail/widgets/user_chat_item.dart';
 import 'package:flutter/material.dart';
+
+import 'widgets/sender_chat_item.dart';
 
 class DetailChatPage extends StatefulWidget {
   final User user;
@@ -44,7 +48,7 @@ class _DetailChatPageState extends State<DetailChatPage> {
       body: Container(
         height: double.infinity,
         margin: EdgeInsets.only(top: 10),
-        padding: EdgeInsets.symmetric(vertical: 30),
+        padding: EdgeInsets.only(top: 30, bottom: 10),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.only(
                 topRight: Radius.circular(30), topLeft: Radius.circular(30)),
@@ -62,7 +66,7 @@ class _DetailChatPageState extends State<DetailChatPage> {
                   itemCount: messages.length,
                 ),
               ),
-              buildBottomInputContainer(context)
+              BottomUserInputContainer()
             ],
           ),
         ),
@@ -70,98 +74,9 @@ class _DetailChatPageState extends State<DetailChatPage> {
     );
   }
 
-  Widget buildChatItem(int position) {
+  buildChatItem(int position) {
     return messages[position].sender == currentUser
-        ? getSelfChatItem(position)
-        : getSenderChatItem(position);
-  }
-
-  Container getSelfChatItem(int position) {
-    return Container(
-      padding: EdgeInsets.only(left: 20, right: 16, top: 20, bottom: 20),
-      margin: EdgeInsets.only(left: 100, top: 10),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(30), bottomLeft: Radius.circular(30)),
-          color: Theme.of(context).accentColor),
-      child: getTimeAndMessageColumn(position),
-    );
-  }
-
-  Row getSenderChatItem(int position) {
-    return Row(
-      children: <Widget>[
-        Expanded(
-          child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 20),
-            margin: EdgeInsets.only(right: 15, top: 10),
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(30),
-                    bottomRight: Radius.circular(30)),
-                color: Colors.red[100]),
-            child: getTimeAndMessageColumn(position),
-          ),
-        ),
-        IconButton(
-          icon: Icon(
-              messages[position].isLiked
-                  ? Icons.favorite
-                  : Icons.favorite_border,
-              color: messages[position].isLiked ? Colors.red : Colors.grey),
-          onPressed: null,
-          padding: EdgeInsets.only(right: 20),
-        )
-      ],
-    );
-  }
-
-  Column getTimeAndMessageColumn(int position) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Text(messages[position].time,
-            style: TextStyle(
-                color: Colors.grey, fontWeight: FontWeight.bold, fontSize: 14)),
-        SizedBox(height: 5),
-        Text(messages[position].text,
-            style: TextStyle(color: Colors.black87, fontSize: 14)),
-      ],
-    );
-  }
-
-  Container buildBottomInputContainer(BuildContext context) {
-    return Container(
-      height: 50,
-      margin: EdgeInsets.symmetric(horizontal: 20),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          color: Theme.of(context).accentColor),
-      child: Row(
-        children: <Widget>[
-          IconButton(
-              icon: Icon(
-                Icons.photo,
-                color: Colors.grey,
-              ),
-              onPressed: null),
-          SizedBox(width: 5),
-          Expanded(
-              child: TextField(
-            onChanged: (value) {},
-            decoration: InputDecoration.collapsed(
-                // collapsed hides bottom line of edit text
-                hintText: 'Send a message...'),
-          )),
-          SizedBox(width: 5),
-          IconButton(
-              icon: Icon(
-                Icons.send,
-              ),
-              onPressed: null),
-        ],
-      ),
-    );
+        ? UserChatItem(position: position)
+        : SenderChatItem(position: position);
   }
 }

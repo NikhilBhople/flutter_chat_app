@@ -27,9 +27,10 @@ class _AnimatorState extends State<Animator>
 
   @override
   void dispose() {
-    super.dispose();
     timer.cancel();
     animationController.dispose();
+
+    super.dispose();
   }
 
   @override

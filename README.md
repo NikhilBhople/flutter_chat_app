@@ -12,3 +12,9 @@ A Chatting Flutter application with beautiful UI and loading animation.
   <img src="screenshot/homeiOS.png" width="300" height="620" title="Home page iOS">
   <img src="screenshot/detailChatPageiOS.png" width="300" height="620" title="Chat history with loading animation">
 </p>
+
+## App Screenshot (Android)
+<p>
+  <img src="screenshot/chatHomePageAndroid.png" width="320" height="620" title="Home page android">
+  <img src="screenshot/chatDetailPageAndroid.png" width="320" height="620" title="Detail page android">
+</p>
