@@ -1,15 +1,10 @@
-import 'package:chatapp/pages/home/widgets/category_selector.dart';
-import 'package:chatapp/pages/home/widgets/favorite_contacts.dart';
 import 'package:flutter/material.dart';
 
+import 'widgets/category_selector.dart';
 import 'widgets/chatlist/chat_list.dart';
+import 'widgets/favoritelist/favorite_contact_item.dart';
 
-class HomePage extends StatefulWidget {
-  @override
-  _HomePageState createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
+class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,7 +46,7 @@ class _HomePageState extends State<HomePage> {
                   color: Theme.of(context).accentColor),
               child: Column(
                 children: <Widget>[
-                  FavoriteContacts(),
+                  FavoriteContactsList(),
                   ChatList(),
                 ],
               ),

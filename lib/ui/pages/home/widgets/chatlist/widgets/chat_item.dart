@@ -1,5 +1,5 @@
-import 'package:chatapp/model/message_model.dart';
-import 'package:chatapp/pages/detail/detail_chat_page.dart';
+import 'package:chatapp/domain/message_model.dart';
+import 'package:chatapp/ui/pages/detail/detail_chat_page.dart';
 import 'package:flutter/material.dart';
 
 class ChatItem extends StatelessWidget {

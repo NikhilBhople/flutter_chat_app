@@ -1,4 +1,4 @@
-import 'package:chatapp/model/message_model.dart';
+import 'package:chatapp/domain/message_model.dart';
 import 'package:flutter/material.dart';
 
 class TimeAndMessageColumn extends StatelessWidget {

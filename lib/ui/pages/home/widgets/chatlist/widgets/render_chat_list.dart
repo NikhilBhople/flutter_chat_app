@@ -1,11 +1,13 @@
-import 'package:chatapp/model/message_model.dart';
-import 'package:chatapp/pages/detail/utils/list_view_animation.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:chatapp/domain/message_model.dart';
+import 'package:chatapp/ui/pages/detail/utils/list_view_animation.dart';
 import 'package:flutter/material.dart';
 
-import 'widgets/chat_item.dart';
+import 'chat_item.dart';
 
-class ChatList extends StatelessWidget {
+class RenderChatList extends StatelessWidget {
+  final List<Message> chatList;
+  RenderChatList(this.chatList);
+
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -16,7 +18,7 @@ class ChatList extends StatelessWidget {
             color: Colors.white),
         child: ListView.builder(
             padding: EdgeInsets.only(right: 16, top: 30, bottom: 10),
-            itemCount: chats.length,
+            itemCount: chatList.length,
             itemBuilder: (BuildContext context, int position) {
               return WidgetANimator(ChatItem(position: position));
             }),
