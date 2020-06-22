@@ -1,42 +1,51 @@
+import 'package:chatapp/repository/chat_repository.dart';
+import 'package:chatapp/store/chat_store.dart';
 import 'package:flutter/material.dart';
+import 'package:states_rebuilder/states_rebuilder.dart';
 
-class CategorySelector extends StatefulWidget {
-  @override
-  _CategorySelectorState createState() => _CategorySelectorState();
-}
+class CategorySelector extends StatelessWidget {
+  // as list is constant we don't want to call it again and again inside build() method
+  final List<String> _list = IN.get<ChatRepository>().getChatCategoryList();
+  int _selectedPosition = 0;
 
-class _CategorySelectorState extends State<CategorySelector> {
-  int _selectedCategory = 0;
-  final List<String> list = ['Massages', 'Online', 'Groups', 'Requests'];
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 90,
-      color: Theme.of(context).primaryColor,
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemBuilder: (BuildContext context, int position) {
-          return GestureDetector(
-            onTap: () => setState(() { // setState is must to rebuild the UI on selection
-              _selectedCategory = position;
-            }),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 30),
-              child: Text(
-                list[position],
-                style: TextStyle(
-                    color: _selectedCategory == position
-                        ? Colors.white
-                        : Colors.white60,
-                    fontSize: 20,
-                    letterSpacing: 1.2,
-                    fontWeight: FontWeight.bold),
-              ),
+    return StateBuilder<ChatStore>(
+        observe: () => RM.get<ChatStore>(),
+        builder: (context, store) {
+          // we can access the methods of repository by using store.state
+          return Container(
+            height: 90,
+            color: Theme.of(context).primaryColor,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (BuildContext context, int position) {
+                return GestureDetector(
+                  onTap: () async {
+                    // setState is must to rebuild the UI on selection
+                    _selectedPosition = position;
+                    store.setState(
+                        (s) => s.getChatHistoryOfCategory(_list[position]));
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16, vertical: 30),
+                    child: Text(
+                      _list[position],
+                      style: TextStyle(
+                          color: _selectedPosition == position
+                              ? Colors.white
+                              : Colors.white60,
+                          fontSize: 20,
+                          letterSpacing: 1.2,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                );
+              },
+              itemCount: _list.length,
             ),
           );
-        },
-        itemCount: list.length,
-      ),
-    );
+        });
   }
 }
