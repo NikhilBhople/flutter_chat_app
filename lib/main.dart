@@ -1,6 +1,7 @@
 import 'package:chatapp/pages/home/home_page.dart';
 import 'package:chatapp/repository/chat_repository.dart';
 import 'package:chatapp/store/chat_store.dart';
+import 'package:chatapp/store/favorite_user_store.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:states_rebuilder/states_rebuilder.dart';
@@ -15,7 +16,8 @@ class ChatApp extends StatelessWidget {
         //NOTE1 : The order doesn't matter.
         //NOTE2: // Register with interface.
         Inject<ChatRepository>(() => ChatRepository()),
-        //NOTE3: AuthenticationService is will be available globally
+        //NOTE3: ChatStore is will be available globally
+        Inject(() => FavoriteUserStore(repository: Injector.get())),
         Inject(() => ChatStore(repository: Injector.get()))],
       builder: (_) {
         return MaterialApp(

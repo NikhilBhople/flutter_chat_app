@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:states_rebuilder/states_rebuilder.dart';
 
+import 'widgets/center_progress_bar.dart';
 import 'widgets/render_chat_list.dart';
 
 class ChatList extends StatelessWidget {
@@ -13,8 +14,8 @@ class ChatList extends StatelessWidget {
       observe:() => RM.get<ChatStore>(),
       builder: (context, reactiveModel) {
         return reactiveModel.whenConnectionState(
-            onIdle: () => Expanded(child: Center(child: CircularProgressIndicator(backgroundColor: Theme.of(context).primaryColor))),
-            onWaiting: () => Expanded(child: Center(child: CircularProgressIndicator(backgroundColor: Theme.of(context).primaryColor))),
+            onIdle: () => ShowProgress(),
+            onWaiting: () => ShowProgress(),
             onData: (data) => RenderChatList(data.chatList),
             onError: (_) => Center(child: Text('Something went wrong. Please try again')));
       },

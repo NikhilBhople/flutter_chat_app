@@ -1,5 +1,5 @@
 import 'package:chatapp/pages/home/widgets/category_selector.dart';
-import 'package:chatapp/pages/home/widgets/favorite_contacts.dart';
+import 'package:chatapp/pages/home/widgets/favoritelist/favorite_contact_item.dart';
 import 'package:flutter/material.dart';
 
 import 'widgets/chatlist/chat_list.dart';
@@ -46,7 +46,7 @@ class HomePage extends StatelessWidget {
                   color: Theme.of(context).accentColor),
               child: Column(
                 children: <Widget>[
-                  FavoriteContacts(),
+                  FavoriteContactsList(),
                   ChatList(),
                 ],
               ),
