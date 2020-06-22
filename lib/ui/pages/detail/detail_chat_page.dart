@@ -1,27 +1,15 @@
 import 'package:chatapp/datasource/detail/store/detail_chat_store.dart';
-import 'package:chatapp/domain/message_model.dart';
 import 'package:chatapp/domain/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:states_rebuilder/states_rebuilder.dart';
 
 import 'render_user_chats.dart';
 import 'widgets/bottom_user_input_container.dart';
-import 'widgets/sender_chat_item.dart';
-import 'widgets/user_chat_item.dart';
 import 'widgets/waiting_container.dart';
 
-class DetailChatPage extends StatefulWidget {
+class DetailChatPage extends StatelessWidget {
   final User user;
   DetailChatPage(this.user);
-
-  @override
-  _DetailChatPageState createState() => _DetailChatPageState(user);
-}
-
-class _DetailChatPageState extends State<DetailChatPage> {
-  final User user;
-  _DetailChatPageState(this.user);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,19 +51,19 @@ class _DetailChatPageState extends State<DetailChatPage> {
             children: <Widget>[
               Expanded(
                   child: StateBuilder<UserChatStore>(
-                initState: (_, store) =>
-                    store.setState((s) => s.getUserChatForDetailPage(user)),
-                observe: () => RM.get<UserChatStore>(),
-                builder: (context, store) {
-                  return store.whenConnectionState(
-                      onIdle: () => WaitingContainer(),
-                      onWaiting: () => WaitingContainer(),
-                      onData: (data) => RenderUserChatHistory(data.chatList),
-                      onError: (error) => Center(
-                          child: Text(
-                              'Something went wrong. Please try again latter')));
-                },
-              )),
+                    initState: (_, store) =>
+                        store.setState((s) => s.getUserChatForDetailPage(user)),
+                    observe: () => RM.get<UserChatStore>(),
+                    builder: (context, store) {
+                      return store.whenConnectionState(
+                          onIdle: () => WaitingContainer(),
+                          onWaiting: () => WaitingContainer(),
+                          onData: (data) => RenderUserChatHistory(data.chatList),
+                          onError: (error) => Center(
+                              child: Text(
+                                  'Something went wrong. Please try again latter')));
+                    },
+                  )),
               BottomUserInputContainer()
             ],
           ),
@@ -83,10 +71,5 @@ class _DetailChatPageState extends State<DetailChatPage> {
       ),
     );
   }
-
-  buildChatItem(int position) {
-    return messages[position].sender == currentUser
-        ? UserChatItem(position: position)
-        : SenderChatItem(position: position);
-  }
 }
+
