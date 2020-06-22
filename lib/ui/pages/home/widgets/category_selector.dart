@@ -1,5 +1,5 @@
-import 'package:chatapp/repository/chat_repository.dart';
-import 'package:chatapp/store/chat_store.dart';
+import 'package:chatapp/datasource/home/store/chat_store.dart';
+import 'package:chatapp/service/chat_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:states_rebuilder/states_rebuilder.dart';
 
@@ -13,7 +13,7 @@ class CategorySelector extends StatelessWidget {
     return StateBuilder<ChatStore>(
         observe: () => RM.get<ChatStore>(),
         builder: (context, store) {
-          // we can access the methods of repository by using store.state
+          // we can access the methods of repository by using datasource.home.store.state
           return Container(
             height: 90,
             color: Theme.of(context).primaryColor,

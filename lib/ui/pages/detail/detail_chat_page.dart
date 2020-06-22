@@ -1,11 +1,11 @@
-import 'package:chatapp/model/message_model.dart';
-import 'package:chatapp/model/user_model.dart';
-import 'package:chatapp/pages/detail/utils/list_view_animation.dart';
-import 'package:chatapp/pages/detail/widgets/bottom_user_input_container.dart';
-import 'package:chatapp/pages/detail/widgets/user_chat_item.dart';
+import 'package:chatapp/domain/message_model.dart';
+import 'package:chatapp/domain/user_model.dart';
 import 'package:flutter/material.dart';
 
+import 'utils/list_view_animation.dart';
+import 'widgets/bottom_user_input_container.dart';
 import 'widgets/sender_chat_item.dart';
+import 'widgets/user_chat_item.dart';
 
 class DetailChatPage extends StatefulWidget {
   final User user;

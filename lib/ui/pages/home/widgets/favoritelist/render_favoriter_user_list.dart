@@ -1,5 +1,5 @@
-import 'package:chatapp/model/user_model.dart';
-import 'package:chatapp/pages/detail/detail_chat_page.dart';
+import 'package:chatapp/domain/user_model.dart';
+import 'package:chatapp/ui/pages/detail/detail_chat_page.dart';
 import 'package:flutter/material.dart';
 
 class RenderFavoriteUserList extends StatelessWidget {

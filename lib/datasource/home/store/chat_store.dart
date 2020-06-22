@@ -1,5 +1,5 @@
-import 'package:chatapp/model/message_model.dart';
-import 'package:chatapp/repository/chat_repository.dart';
+import 'package:chatapp/domain/message_model.dart';
+import 'package:chatapp/service/chat_repository.dart';
 import 'package:flutter/material.dart';
 
 class ChatStore {
@@ -14,4 +14,4 @@ class ChatStore {
     _chatList = await repository.getChatHistoryOfCategory(category);
   }
 }
-// It will be reactive model to observe data and show UI accordingly
+// It will be reactive domain.model to observe data and show UI accordingly

@@ -1,5 +1,5 @@
-import 'package:chatapp/model/user_model.dart';
-import 'package:chatapp/repository/chat_repository.dart';
+import 'package:chatapp/domain/user_model.dart';
+import 'package:chatapp/service/chat_repository.dart';
 import 'package:flutter/material.dart';
 
 class FavoriteUserStore {

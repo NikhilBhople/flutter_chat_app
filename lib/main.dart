@@ -1,10 +1,11 @@
-import 'package:chatapp/pages/home/home_page.dart';
-import 'package:chatapp/repository/chat_repository.dart';
-import 'package:chatapp/store/chat_store.dart';
-import 'package:chatapp/store/favorite_user_store.dart';
+import 'package:chatapp/service/chat_repository.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:states_rebuilder/states_rebuilder.dart';
+
+import 'datasource/home/store/chat_store.dart';
+import 'datasource/home/store/favorite_user_store.dart';
+import 'ui/pages/home/home_page.dart';
 
 void main() => runApp(ChatApp());
 

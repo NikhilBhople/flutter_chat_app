@@ -1,5 +1,5 @@
-import 'package:chatapp/model/message_model.dart';
-import 'package:chatapp/model/user_model.dart';
+import 'package:chatapp/domain/message_model.dart';
+import 'package:chatapp/domain/user_model.dart';
 
 class ChatRepository {
 

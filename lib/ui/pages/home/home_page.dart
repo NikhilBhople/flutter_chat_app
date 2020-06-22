@@ -1,8 +1,8 @@
-import 'package:chatapp/pages/home/widgets/category_selector.dart';
-import 'package:chatapp/pages/home/widgets/favoritelist/favorite_contact_item.dart';
 import 'package:flutter/material.dart';
 
+import 'widgets/category_selector.dart';
 import 'widgets/chatlist/chat_list.dart';
+import 'widgets/favoritelist/favorite_contact_item.dart';
 
 class HomePage extends StatelessWidget {
   @override

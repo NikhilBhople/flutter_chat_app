@@ -1,5 +1,5 @@
-import 'package:chatapp/model/message_model.dart';
-import 'package:chatapp/pages/detail/utils/list_view_animation.dart';
+import 'package:chatapp/domain/message_model.dart';
+import 'package:chatapp/ui/pages/detail/utils/list_view_animation.dart';
 import 'package:flutter/material.dart';
 
 import 'chat_item.dart';

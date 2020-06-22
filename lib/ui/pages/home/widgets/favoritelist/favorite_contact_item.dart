@@ -1,9 +1,9 @@
-import 'package:chatapp/pages/home/widgets/favoritelist/render_favoriter_user_list.dart';
-import 'package:chatapp/store/favorite_user_store.dart';
+import 'package:chatapp/datasource/home/store/favorite_user_store.dart';
 import 'package:flutter/material.dart';
 import 'package:states_rebuilder/states_rebuilder.dart';
 
 import '../chatlist/widgets/center_progress_bar.dart';
+import 'render_favoriter_user_list.dart';
 
 class FavoriteContactsList extends StatelessWidget {
   @override

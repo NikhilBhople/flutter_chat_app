@@ -1,4 +1,4 @@
-import 'package:chatapp/store/chat_store.dart';
+import 'package:chatapp/datasource/home/store/chat_store.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:states_rebuilder/states_rebuilder.dart';
